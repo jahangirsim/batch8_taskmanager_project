@@ -1,25 +1,23 @@
+import 'package:batch8_taskmanager_project/ui/screens/forgot_password_pin_verification_screen.dart';
 import 'package:batch8_taskmanager_project/ui/widgets/screen_background.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-class SignupScreen extends StatefulWidget {
-  const SignupScreen({super.key});
+class ForgotPasswordEmailVerificationScreen extends StatefulWidget {
+  const ForgotPasswordEmailVerificationScreen({super.key});
 
-  static const String name = '/sign-up-screen';
+  static const String name = '/forgot-password-email-verification-screen';
 
   @override
-  State<SignupScreen> createState() => _SignupScreenState();
+  State<ForgotPasswordEmailVerificationScreen> createState() => _ForgotPasswordEmailVerificationScreenState();
 }
 
 
-class _SignupScreenState extends State<SignupScreen> {
+class _ForgotPasswordEmailVerificationScreenState extends State<ForgotPasswordEmailVerificationScreen> {
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _emailTEController = TextEditingController();
-  final TextEditingController _firstNameTEController = TextEditingController();
-  final TextEditingController _lastNameTEController = TextEditingController();
-  final TextEditingController _mobileTEController = TextEditingController();
-  final TextEditingController _passwordTEController = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -40,9 +38,13 @@ class _SignupScreenState extends State<SignupScreen> {
                   height: 68,
                 ),
                 Text(
-                  "Join with Us",
+                  "Your Email Address",
                   style: textStyle.titleLarge,
                 ),
+                const SizedBox(
+                  height: 24,
+                ),
+                Text("A 6 digit pin verification code will send to your email address", style: textStyle.titleMedium,),
                 const SizedBox(
                   height: 24,
                 ),
@@ -52,45 +54,15 @@ class _SignupScreenState extends State<SignupScreen> {
                   decoration: const InputDecoration(hintText: "Email Address"),
                 ),
                 const SizedBox(
-                  height: 12,
-                ),
-                TextFormField(
-                  controller: _firstNameTEController,
-            
-                  decoration: const InputDecoration(hintText: "First Name"),
-                ),
-                const SizedBox(
-                  height: 12,
-                ),
-                TextFormField(
-                  controller: _lastNameTEController,
-            
-                  decoration: const InputDecoration(hintText: "Last Name"),
-                ),
-                const SizedBox(
-                  height: 12,
-                ),
-                TextFormField(
-                  controller: _mobileTEController,
-                  keyboardType: TextInputType.number,
-                  decoration: const InputDecoration(hintText: "Mobile"),
-                ),
-                const SizedBox(
-                  height: 12,
-                ),
-                TextFormField(
-                  controller: _passwordTEController,
-                  obscureText: true,
-                  decoration: const InputDecoration(hintText: "Password"),
-                ),
-                const SizedBox(
                   height: 24,
                 ),
-                ElevatedButton(onPressed: () {}, child: const Icon(Icons.double_arrow)),
+                ElevatedButton(onPressed: () {
+                  Navigator.pushNamedAndRemoveUntil(context, ForgotPasswordPINlVerificationScreen.name, (_) => false);
+                }, child: const Icon(Icons.double_arrow)),
                 const SizedBox(
                   height: 48,
                 ),
-                _buildSignUp()
+                _buildForgetPasswordEmailVerification()
               ],
             ),
                     ),
@@ -99,7 +71,7 @@ class _SignupScreenState extends State<SignupScreen> {
     );
   }
 
-  Widget _buildSignUp() {
+  Widget _buildForgetPasswordEmailVerification() {
     return RichText(
             text: TextSpan(
                 text: "Have an account? ",
@@ -119,11 +91,6 @@ class _SignupScreenState extends State<SignupScreen> {
   @override
   void dispose() {
       _emailTEController.dispose();
-      _firstNameTEController.dispose();
-      _lastNameTEController.dispose();
-      _mobileTEController.dispose();
-      _passwordTEController.dispose();
-
     super.dispose();
   }
 }

@@ -1,3 +1,5 @@
+import 'package:batch8_taskmanager_project/ui/screens/forgot_password_email_verification_screen.dart';
+import 'package:batch8_taskmanager_project/ui/screens/main_bottom_nav_screen.dart';
 import 'package:batch8_taskmanager_project/ui/screens/sign_up_screen.dart';
 import 'package:batch8_taskmanager_project/ui/widgets/screen_background.dart';
 import 'package:flutter/gestures.dart';
@@ -11,11 +13,14 @@ class SignInScreen extends StatefulWidget {
   @override
   State<SignInScreen> createState() => _SignInScreenState();
 }
-GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-final TextEditingController _emailTEController = TextEditingController();
-final TextEditingController _passwordTEController = TextEditingController();
+
 
 class _SignInScreenState extends State<SignInScreen> {
+
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController _emailTEController = TextEditingController();
+  final TextEditingController _passwordTEController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     final textStyle = Theme.of(context).textTheme;
@@ -56,11 +61,15 @@ class _SignInScreenState extends State<SignInScreen> {
               const SizedBox(
                 height: 24,
               ),
-              ElevatedButton(onPressed: () {}, child: const Icon(Icons.double_arrow)),
+              ElevatedButton(onPressed: () {
+                Navigator.pushNamedAndRemoveUntil(context, MainBottomNavScreen.name, (value) => false);
+              }, child: const Icon(Icons.double_arrow)),
               const SizedBox(
                 height: 48,
               ),
-              TextButton(onPressed: () {}, child: const Text("Forgot Password?")),
+              TextButton(onPressed: () {
+                Navigator.pushNamed(context, ForgotPasswordEmailVerificationScreen.name);
+              }, child: const Text("Forgot Password?")),
               const SizedBox(
                 height: 24,
               ),

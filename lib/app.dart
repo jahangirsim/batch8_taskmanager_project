@@ -1,3 +1,7 @@
+import 'package:batch8_taskmanager_project/ui/screens/forgot_password_email_verification_screen.dart';
+import 'package:batch8_taskmanager_project/ui/screens/forgot_password_pin_verification_screen.dart';
+import 'package:batch8_taskmanager_project/ui/screens/main_bottom_nav_screen.dart';
+import 'package:batch8_taskmanager_project/ui/screens/reset_password_screen.dart';
 import 'package:batch8_taskmanager_project/ui/screens/sign_in_screen.dart';
 import 'package:batch8_taskmanager_project/ui/screens/sign_up_screen.dart';
 import 'package:batch8_taskmanager_project/ui/screens/splash_screen.dart';
@@ -14,7 +18,7 @@ class TaskManagerApp extends StatelessWidget {
         colorSchemeSeed: AppColors.themeColor,
         textTheme: const TextTheme(
           titleLarge: TextStyle(fontSize: 32, fontWeight: FontWeight.w600),
-          titleMedium: TextStyle(fontSize: 12, fontWeight: FontWeight.normal),
+          titleMedium: TextStyle(fontSize: 14, fontWeight: FontWeight.normal),
         ),
         inputDecorationTheme: const InputDecorationTheme(
               filled: true,
@@ -58,6 +62,14 @@ class TaskManagerApp extends StatelessWidget {
           widget = const SignInScreen();
         }else if(settings.name == SignupScreen.name){
           widget = const SignupScreen();
+        }else if(settings.name == ForgotPasswordEmailVerificationScreen.name){
+          widget = const ForgotPasswordEmailVerificationScreen();
+        }else if(settings.name == ForgotPasswordPINlVerificationScreen.name){
+          widget = const ForgotPasswordPINlVerificationScreen();
+        }else if(settings.name == ResetPasswordScreen.name){
+          widget = const ResetPasswordScreen();
+        }else if(settings.name == MainBottomNavScreen.name){
+          widget = const MainBottomNavScreen();
         }
 
         return MaterialPageRoute(builder: (_) => widget);
